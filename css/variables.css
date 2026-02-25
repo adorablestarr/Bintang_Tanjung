@@ -44,3 +44,12 @@
   /* Nav height */
   --nav-h: 70px;
 }
+
+/* ✅ RESPONSIF: Kurangi spacing di layar kecil supaya tidak terlalu renggang */
+@media (max-width: 768px) {
+  :root {
+    --space-lg: 1.25rem;
+    --space-xl: 2.5rem;
+    --space-2xl: 3.5rem;
+  }
+}

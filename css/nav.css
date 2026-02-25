@@ -20,6 +20,7 @@
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
+  /* ✅ RESPONSIF: padding kiri kanan lebih kecil di mobile */
   padding: 0 var(--space-lg);
   height: 100%;
   display: flex;
@@ -91,12 +92,10 @@
   background: var(--clr-text);
   border-radius: 2px;
   transition: var(--transition);
-  /* ✅ FIX: tambah transform-origin supaya rotasi pivot di tengah */
   transform-origin: center;
 }
 
-/* ✅ FIX: Animasi hamburger → tanda ✕ saat menu terbuka */
-/* Sebelumnya tidak ada CSS ini → 3 garis diam saja saat menu dibuka */
+/* Animasi hamburger → tanda ✕ */
 .nav-toggle.open span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
@@ -109,6 +108,10 @@
 }
 
 @media (max-width: 768px) {
+  .nav-container {
+    padding: 0 1rem;
+  }
+
   .nav-links {
     position: fixed;
     top: var(--nav-h);
@@ -117,8 +120,9 @@
     background: rgba(10,10,15,0.97);
     backdrop-filter: blur(20px);
     flex-direction: column;
-    padding: var(--space-lg);
-    gap: var(--space-md);
+    /* ✅ RESPONSIF: padding lebih kecil di mobile */
+    padding: 1.5rem 1rem;
+    gap: 1.25rem;
     transform: translateY(-120%);
     opacity: 0;
     transition: transform var(--transition), opacity var(--transition);
@@ -132,5 +136,13 @@
 
   .nav-toggle {
     display: flex;
+  }
+
+  /* ✅ RESPONSIF: link lebih besar dan mudah diklik di mobile */
+  .nav-link {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    width: 100%;
+    text-align: center;
   }
 }

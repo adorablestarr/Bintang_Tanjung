@@ -237,6 +237,17 @@
 
 .cert-card:hover .cert-glow { opacity: 1; }
 
+/* ✅ RESPONSIF */
 @media (max-width: 700px) {
-  .cert-grid { grid-template-columns: 1fr; }
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-section {
+    padding: var(--space-2xl) 1rem;
+  }
+
+  .cert-card-inner {
+    padding: 1.25rem;
+  }
 }

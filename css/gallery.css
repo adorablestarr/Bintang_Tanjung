@@ -289,10 +289,6 @@
 }
 
 /* ===== TOAST ===== */
-/* ✅ FIX: Pindah ke top agar tidak bentrok dengan footer di bawah.
-   Hidden state pakai translateY(-150px) — pasti keluar viewport atas.
-   Kode lama pakai bottom + translateY(120%) yang tidak cukup jauh
-   sehingga toast masih kelihatan sedikit di bawah layar. */
 .toast {
   position: fixed;
   top: 1.5rem;
@@ -317,8 +313,29 @@
   pointer-events: auto;
 }
 
+/* ✅ RESPONSIF */
 @media (max-width: 768px) {
+  .gallery-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .tab-btn {
+    font-size: 0.8rem;
+    padding: 0.65rem 1rem;
+  }
+
+  /* ✅ Toast lebih kecil di mobile */
+  .toast {
+    font-size: 0.78rem;
+    padding: 0.6rem 1.1rem;
+    max-width: 90vw;
+    white-space: normal;
+    text-align: center;
   }
 }

@@ -18,11 +18,7 @@
 .gallery-grid .gallery-card:nth-child(5) { transition-delay: 320ms; }
 .gallery-grid .gallery-card:nth-child(6) { transition-delay: 400ms; }
 
-/* ✅ FIX: Tambah reset delay saat card BELUM visible (state tersembunyi)
-   Masalah: transition-delay berlaku dua arah — saat muncul DAN saat menghilang.
-   Ketika triggerReveal() hapus class .visible, card menghilang secara stagger
-   (card ke-6 hilang 400ms lebih lambat dari card ke-1) → terlihat berantakan.
-   Dengan ini, card langsung hilang sekaligus, lalu muncul stagger dengan rapi. */
+/* Reset delay saat card belum visible supaya hilang sekaligus, bukan stagger */
 .gallery-grid .gallery-card:not(.visible) {
   transition-delay: 0ms;
 }
@@ -32,3 +28,17 @@
 .hero-content .reveal:nth-child(3) { transition-delay: 300ms; }
 .hero-content .reveal:nth-child(4) { transition-delay: 400ms; }
 .hero-content .reveal:nth-child(5) { transition-delay: 500ms; }
+
+/* ✅ RESPONSIF: Kurangi animasi di mobile untuk performa lebih baik */
+@media (max-width: 480px) {
+  .reveal {
+    transform: translateY(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .hero-content .reveal:nth-child(1) { transition-delay: 50ms; }
+  .hero-content .reveal:nth-child(2) { transition-delay: 100ms; }
+  .hero-content .reveal:nth-child(3) { transition-delay: 150ms; }
+  .hero-content .reveal:nth-child(4) { transition-delay: 200ms; }
+  .hero-content .reveal:nth-child(5) { transition-delay: 250ms; }
+}

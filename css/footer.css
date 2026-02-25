@@ -112,7 +112,6 @@
 }
 
 .contact-card.email > svg {
-  /* icon stays inline with text */
   display: block;
 }
 
@@ -130,10 +129,8 @@
   font-weight: 400;
   color: var(--clr-text-dim);
   letter-spacing: 0.04em;
-  /* Show as sub-text below the email, achieved via flex-column on mobile */
 }
 
-/* On wider screen, hint sits separately */
 .contact-card.email {
   flex-wrap: wrap;
   row-gap: 0;
@@ -175,14 +172,33 @@
   color: var(--clr-text-dim);
 }
 
+/* ✅ RESPONSIF mobile 600px */
 @media (max-width: 600px) {
+  .contact-section {
+    padding: var(--space-2xl) 1rem;
+  }
+
   .contact-links {
     flex-direction: column;
     align-items: center;
+    gap: 0.65rem;
   }
+
   .contact-card {
     width: 100%;
-    max-width: 280px;
+    max-width: 320px;
     justify-content: center;
+  }
+
+  /* ✅ Email button di mobile: teks email tidak overflow */
+  #emailBtnText {
+    font-size: 0.75rem;
+    word-break: break-all;
+    text-align: center;
+    flex: unset;
+  }
+
+  .copy-hint {
+    display: none;
   }
 }
