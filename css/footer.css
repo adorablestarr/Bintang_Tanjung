@@ -1,0 +1,188 @@
+.contact-section {
+  padding: var(--space-2xl) var(--space-lg);
+  text-align: center;
+  border-top: 1px solid var(--clr-border);
+}
+
+.contact-container {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.contact-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--clr-accent);
+  background: rgba(108,99,255,0.1);
+  border: 1px solid rgba(108,99,255,0.25);
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  margin-bottom: var(--space-sm);
+}
+
+.contact-container h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: var(--space-sm);
+}
+
+.contact-container p {
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-xl);
+  line-height: 1.75;
+}
+
+.contact-links {
+  display: flex;
+  gap: 0.85rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Base card style */
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.35rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--clr-border);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all var(--transition);
+  background: var(--clr-surface);
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+}
+
+/* LinkedIn */
+.contact-card.linkedin {
+  color: #0a66c2;
+  border-color: rgba(10,102,194,0.3);
+}
+.contact-card.linkedin:hover {
+  background: rgba(10,102,194,0.1);
+  box-shadow: 0 10px 30px rgba(10,102,194,0.2);
+  border-color: rgba(10,102,194,0.5);
+}
+
+/* GitHub */
+.contact-card.github {
+  color: var(--clr-text);
+  border-color: var(--clr-border-2);
+}
+.contact-card.github:hover {
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Instagram */
+.contact-card.instagram {
+  color: #e1306c;
+  border-color: rgba(225,48,108,0.3);
+}
+.contact-card.instagram:hover {
+  background: rgba(225,48,108,0.08);
+  box-shadow: 0 10px 30px rgba(225,48,108,0.18);
+  border-color: rgba(225,48,108,0.5);
+}
+
+/* Email - copy button */
+.contact-card.email {
+  position: relative;
+  color: var(--clr-accent-2);
+  border-color: rgba(245,158,11,0.3);
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.8rem 1.35rem 0.6rem;
+}
+.contact-card.email:hover {
+  background: rgba(245,158,11,0.08);
+  box-shadow: 0 10px 30px rgba(245,158,11,0.15);
+  border-color: rgba(245,158,11,0.5);
+}
+
+.contact-card.email > svg {
+  /* icon stays inline with text */
+  display: block;
+}
+
+.contact-card.email {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.35rem;
+}
+
+/* Sub-label under email address */
+.copy-hint {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 400;
+  color: var(--clr-text-dim);
+  letter-spacing: 0.04em;
+  /* Show as sub-text below the email, achieved via flex-column on mobile */
+}
+
+/* On wider screen, hint sits separately */
+.contact-card.email {
+  flex-wrap: wrap;
+  row-gap: 0;
+}
+
+#emailBtnText {
+  flex: 1;
+  text-align: left;
+  font-size: 0.82rem;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid var(--clr-border);
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.footer p {
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+}
+
+.footer-copy {
+  font-size: 0.72rem;
+  color: var(--clr-text-dim);
+}
+
+@media (max-width: 600px) {
+  .contact-links {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-card {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}

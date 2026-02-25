@@ -1,0 +1,324 @@
+.gallery-section {
+  padding: var(--space-2xl) 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+/* Tabs */
+.gallery-tabs {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  background: var(--clr-surface);
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.tab-btn:hover {
+  border-color: var(--clr-accent);
+  color: var(--clr-text);
+}
+
+.tab-btn.active {
+  background: var(--clr-accent);
+  border-color: var(--clr-accent);
+  color: white;
+  box-shadow: 0 4px 20px rgba(108,99,255,0.35);
+}
+
+/* Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  transition: opacity var(--transition);
+}
+
+/* Card */
+.gallery-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--clr-border-2);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px rgba(108,99,255,0.1);
+}
+
+.card-img-wrap {
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+  background: var(--clr-surface-2);
+}
+
+/* Real image */
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.gallery-card:hover .card-img {
+  transform: scale(1.05);
+}
+
+/* Fallback placeholder */
+.card-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.card-img-placeholder p {
+  font-size: 0.78rem;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.placeholder-hint {
+  font-size: 0.65rem;
+  font-family: monospace;
+  color: var(--clr-accent);
+  background: rgba(108,99,255,0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  opacity: 0.8;
+  word-break: break-all;
+}
+
+.placeholder-icon {
+  font-size: 2.5rem;
+}
+
+/* Gradient placeholders */
+.design   { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+.design-2 { background: linear-gradient(135deg, #1a0028 0%, #2d1b69 50%, #11998e 100%); }
+.design-3 { background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); }
+.design-4 { background: linear-gradient(135deg, #005c5c 0%, #004953 50%, #003d4d 100%); }
+.design-5 { background: linear-gradient(135deg, #1a1a00 0%, #2d2d00 50%, #4a3900 100%); }
+.design-6 { background: linear-gradient(135deg, #2d0000 0%, #450000 50%, #1a0000 100%); }
+
+.org-1    { background: linear-gradient(135deg, #0a2040 0%, #0e3b63 50%, #1a5276 100%); }
+.org-2    { background: linear-gradient(135deg, #001f3f 0%, #003366 50%, #004d99 100%); }
+.org-3    { background: linear-gradient(135deg, #0d3300 0%, #1a5200 50%, #236b00 100%); }
+.org-4    { background: linear-gradient(135deg, #2d1900 0%, #4d2d00 50%, #663d00 100%); }
+
+/* Overlay */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.75));
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0.75rem;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.gallery-card:hover .card-overlay {
+  opacity: 1;
+}
+
+.overlay-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--clr-accent);
+  color: white;
+  padding: 0.25rem 0.65rem;
+  border-radius: 100px;
+}
+
+.overlay-tag.org-tag {
+  background: var(--clr-accent-org);
+}
+
+/* Preview expand button */
+.preview-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.preview-btn:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.1);
+}
+
+.card-info {
+  padding: 1.25rem;
+}
+
+.org-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--clr-accent-org);
+  background: rgba(16,185,129,0.1);
+  border: 1px solid rgba(16,185,129,0.2);
+  padding: 0.25rem 0.65rem;
+  border-radius: 100px;
+  margin-bottom: 0.6rem;
+}
+
+.card-info h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--clr-text);
+}
+
+.card-info p {
+  font-size: 0.82rem;
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.card-tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.card-tags span {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--clr-surface-2);
+  border: 1px solid var(--clr-border);
+  border-radius: 100px;
+  color: var(--clr-text-dim);
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  font-size: 1.2rem;
+  color: white;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+
+.lightbox-close:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* ===== TOAST ===== */
+/* ✅ FIX: Pindah ke top agar tidak bentrok dengan footer di bawah.
+   Hidden state pakai translateY(-150px) — pasti keluar viewport atas.
+   Kode lama pakai bottom + translateY(120%) yang tidak cukup jauh
+   sehingga toast masih kelihatan sedikit di bawah layar. */
+.toast {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-150px);
+  background: var(--clr-surface-2);
+  border: 1px solid var(--clr-border-2);
+  color: var(--clr-text);
+  padding: 0.75rem 1.5rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  z-index: 99999;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+}
