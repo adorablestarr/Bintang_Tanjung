@@ -1,30 +1,31 @@
+/* ===== DESIGN TOKENS ===== */
 :root {
-  /* Colors */
-  --clr-bg: #0a0a0f;
-  --clr-bg-2: #111118;
-  --clr-surface: #16161f;
-  --clr-surface-2: #1e1e2a;
-  --clr-border: rgba(255,255,255,0.07);
-  --clr-border-2: rgba(255,255,255,0.12);
+  /* Dark mode (default) */
+  --clr-bg:         #0a0a0f;
+  --clr-bg-2:       #111118;
+  --clr-surface:    #16161f;
+  --clr-surface-2:  #1e1e2a;
+  --clr-border:     rgba(255,255,255,0.07);
+  --clr-border-2:   rgba(255,255,255,0.12);
 
-  --clr-accent: #6c63ff;
-  --clr-accent-2: #f59e0b;
+  --clr-accent:     #6c63ff;
+  --clr-accent-2:   #f59e0b;
   --clr-accent-org: #10b981;
 
-  --clr-text: #e8e8f0;
+  --clr-text:       #e8e8f0;
   --clr-text-muted: #7c7c9a;
-  --clr-text-dim: #4a4a6a;
+  --clr-text-dim:   #4a4a6a;
 
   /* Typography */
   --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
 
   /* Spacing */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2.5rem;
-  --space-xl: 4rem;
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2.5rem;
+  --space-xl:  4rem;
   --space-2xl: 6rem;
 
   /* Border radius */
@@ -38,18 +39,36 @@
   --shadow-glow: 0 0 60px rgba(108,99,255,0.15);
 
   /* Transitions */
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition:      0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Nav height */
   --nav-h: 70px;
 }
 
-/* ✅ RESPONSIF: Kurangi spacing di layar kecil supaya tidak terlalu renggang */
+/* ===== LIGHT MODE ===== */
+body.light-mode {
+  --clr-bg:         #f4f4f8;
+  --clr-bg-2:       #eaeaf2;
+  --clr-surface:    #ffffff;
+  --clr-surface-2:  #eaeaf2;
+  --clr-border:     rgba(0,0,0,0.08);
+  --clr-border-2:   rgba(0,0,0,0.14);
+  --clr-text:       #0f0f1a;
+  --clr-text-muted: #5a5a7a;
+  --clr-text-dim:   #9a9ab0;
+}
+
+/* Smooth theme transition */
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ===== RESPONSIVE SPACING ===== */
 @media (max-width: 768px) {
   :root {
-    --space-lg: 1.25rem;
-    --space-xl: 2.5rem;
+    --space-lg:  1.25rem;
+    --space-xl:  2.5rem;
     --space-2xl: 3.5rem;
   }
 }

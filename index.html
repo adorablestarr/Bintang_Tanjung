@@ -3,484 +3,862 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bintang Tanjung — Software Engineer & Designer</title>
+
+  <!-- ===== SEO ===== -->
+  <title>Bintang Tanjung — Software Engineer, Designer & Content Creator</title>
+  <meta name="description" content="Portfolio Bintang Jesisca Tanjung, Software Engineer, UI Designer, dan Content Creator dari Institut Teknologi Del. Template CapCut dengan 7.9M+ tayangan, web developer, dan desainer visual." />
+  <meta name="keywords" content="software engineer, frontend developer, web developer, portfolio, JavaScript, Python, React, Institut Teknologi Del, Bintang Tanjung" />
+  <meta name="author" content="Bintang Jesisca Tanjung" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- ===== OPEN GRAPH ===== -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://bintangtanjung.dev/" />
+  <meta property="og:title"       content="Bintang Tanjung — Software Engineer & UI Designer" />
+  <meta property="og:description" content="Portfolio Bintang Jesisca Tanjung — Software Engineer yang passionate tentang clean code dan desain visual yang memukau." />
+  <meta property="og:image"       content="https://bintangtanjung.dev/assets/images/og-image.jpg" />
+  <meta property="og:locale"      content="id_ID" />
+
+  <!-- ===== TWITTER CARD ===== -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Bintang Tanjung — Software Engineer" />
+  <meta name="twitter:description" content="Portfolio Bintang Jesisca Tanjung, Software Engineer & UI Designer." />
+  <meta name="twitter:image"       content="https://bintangtanjung.dev/assets/images/og-image.jpg" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/nav.css" />
   <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/skills.css" />
+  <link rel="stylesheet" href="css/projects.css" />
   <link rel="stylesheet" href="css/gallery.css" />
   <link rel="stylesheet" href="css/certificates.css" />
+  <link rel="stylesheet" href="css/contact-form.css" />
+  <link rel="stylesheet" href="css/creator.css" />
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/animations.css" />
 </head>
 <body>
 
   <!-- ===== TOAST NOTIF ===== -->
-  <div class="toast" id="toast">✅ Email disalin!</div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <!-- ===== LIGHTBOX ===== -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightboxClose">✕</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Preview gambar">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Tutup preview">✕</button>
     <div class="lightbox-content">
-      <img id="lightboxImg" src="" alt="Preview" />
+      <img id="lightboxImg" src="" alt="Preview gambar yang diperbesar" />
     </div>
   </div>
 
   <!-- ===== NAVIGATION ===== -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#home" class="nav-logo">
-        <span class="logo-bracket">&lt;</span>Star<span class="logo-bracket">/&gt;</span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#gallery" class="nav-link">Gallery</a></li>
-        <li><a href="#certificates" class="nav-link">Sertifikat</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="home">
-    <div class="hero-bg-grid"></div>
-    <div class="hero-orb hero-orb-1"></div>
-    <div class="hero-orb hero-orb-2"></div>
-    <div class="hero-container">
-      <div class="hero-content">
-        <div class="hero-badge reveal">
-          <span class="badge-dot"></span>
-          Available for Work
-        </div>
-        <h1 class="hero-title reveal">
-          Software<br/>
-          <span class="title-accent">Engineer</span><br/>
-          &amp; Designer
-        </h1>
-        <p class="hero-desc reveal">
-          Membangun solusi digital yang elegan — dari arsitektur backend yang solid hingga antarmuka yang memukau. Passionate tentang clean code &amp; user experience.
-        </p>
-        <div class="hero-actions reveal">
-          <a href="#gallery" class="btn-primary">Lihat Karya</a>
-          <a href="#contact" class="btn-ghost">Hubungi Saya</a>
-        </div>
-        <div class="hero-stats reveal">
-          <div class="stat">
-            <span class="stat-num">2+</span>
-            <span class="stat-label">Tahun Coding</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-num">10+</span>
-            <span class="stat-label">Proyek Selesai</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-num">2</span>
-            <span class="stat-label">Sertifikat Dicoding</span>
-          </div>
-        </div>
+  <header>
+    <nav class="navbar" id="navbar" aria-label="Navigasi utama">
+      <div class="nav-container">
+        <a href="#home" class="nav-logo" aria-label="Bintang Tanjung - ke atas">
+          <span class="logo-bracket">&lt;</span>Star<span class="logo-bracket">/&gt;</span>
+        </a>
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a href="#home"         class="nav-link active">Home</a></li>
+          <li><a href="#about"        class="nav-link">About</a></li>
+          <li><a href="#skills"       class="nav-link">Skills</a></li>
+          <li><a href="#projects"     class="nav-link">Projects</a></li>
+          <li><a href="#creator"      class="nav-link">Creator</a></li>
+          <li><a href="#gallery"      class="nav-link">Gallery</a></li>
+          <li><a href="#certificates" class="nav-link">Sertifikat</a></li>
+          <li><a href="#contact"      class="nav-link">Contact</a></li>
+        </ul>
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Ganti tema gelap/terang" title="Toggle dark/light mode">
+          <span class="theme-icon theme-icon--dark" aria-hidden="true">🌙</span>
+          <span class="theme-icon theme-icon--light" aria-hidden="true">☀️</span>
+        </button>
+        <!-- Hamburger -->
+        <button class="nav-toggle" id="navToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <div class="hero-visual reveal">
-        <div class="code-card">
-          <div class="code-card-header">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-            <span class="code-filename">portfolio.js</span>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home" aria-label="Halaman utama">
+      <div class="hero-bg-grid" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-badge reveal">
+            <span class="badge-dot" aria-hidden="true"></span>
+            Available for Work
           </div>
-          <div class="code-body">
-            <pre><code><span class="c-keyword">const</span> <span class="c-var">developer</span> = {
+          <h1 class="hero-title reveal">
+            Software<br/>
+            <span class="title-accent">Engineer</span><br/>
+            &amp; Creator
+          </h1>
+          <p class="hero-desc reveal">
+            Membangun solusi digital yang elegan — dari arsitektur backend yang solid hingga antarmuka yang memukau. Passionate tentang clean code &amp; user experience.
+          </p>
+          <div class="hero-actions reveal">
+            <a href="#projects" class="btn-primary">Lihat Projects</a>
+            <a href="#contact"  class="btn-ghost">Hubungi Saya</a>
+          </div>
+          <div class="hero-stats reveal" aria-label="Statistik singkat">
+            <div class="stat">
+              <span class="stat-num">2+</span>
+              <span class="stat-label">Tahun Coding</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat">
+              <span class="stat-num">7.9M+</span>
+              <span class="stat-label">Total Views</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat">
+              <span class="stat-num">10+</span>
+              <span class="stat-label">Proyek Selesai</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="code-card">
+            <div class="code-card-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="code-filename">portfolio.js</span>
+            </div>
+            <div class="code-body">
+              <pre><code><span class="c-keyword">const</span> <span class="c-var">developer</span> = {
   <span class="c-prop">name</span>: <span class="c-str">"Bintang Jesisca Tanjung"</span>,
   <span class="c-prop">role</span>: <span class="c-str">"Software Engineer"</span>,
   <span class="c-prop">skills</span>: [
     <span class="c-str">"JavaScript"</span>, <span class="c-str">"Python"</span>,
     <span class="c-str">"React"</span>, <span class="c-str">"Node.js"</span>,
   ],
-  <span class="c-prop">passion</span>: <span class="c-str">"Building great things"</span>,
+  <span class="c-prop">creator</span>: {
+    <span class="c-prop">capcut</span>: <span class="c-str">"7.6M+ views"</span>,
+    <span class="c-prop">tiktok</span>: <span class="c-str">"291K views"</span>,
+  },
   <span class="c-prop">coffee</span>: <span class="c-bool">true</span> ☕
 };</code></pre>
-          </div>
-        </div>
-        <div class="floating-tag tag-1">React ⚛</div>
-        <div class="floating-tag tag-2">Canva 🎨</div>
-        <div class="floating-tag tag-3">Figma ✦</div>
-      </div>
-    </div>
-    <div class="hero-scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section class="about-strip" id="about">
-    <div class="about-container">
-      <div class="about-text reveal">
-        <span class="section-label">Tentang Saya</span>
-        <h2>Seorang Software Engineer yang peduli terhadap <em>detail &amp; desain</em></h2>
-        <p>Saya adalah mahasiswa/profesional di bidang Software Engineering yang juga memiliki ketertarikan kuat pada desain visual. Saya aktif berkontribusi di organisasi kampus dan terus belajar melalui platform seperti Dicoding.</p>
-      </div>
-      <div class="about-skills reveal">
-        <div class="skill-pill">HTML/CSS</div>
-        <div class="skill-pill">JavaScript</div>
-        <div class="skill-pill">Python</div>
-        <div class="skill-pill">Canva</div>
-        <div class="skill-pill">Figma</div>
-        <div class="skill-pill">Git</div>
-        <div class="skill-pill">React</div>
-        <div class="skill-pill">Laravel</div>
-        <div class="skill-pill">Flutter</div>
-        <div class="skill-pill">Next.js</div>
-        <div class="skill-pill">Golang</div>
-        <div class="skill-pill">C</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GALLERY ===== -->
-  <section class="gallery-section" id="gallery">
-    <div class="section-header reveal">
-      <span class="section-label">Portofolio</span>
-      <h2>Karya &amp; Aktivitas</h2>
-      <p>Hasil kreasi desain dan perjalanan saya di dunia organisasi kampus.</p>
-    </div>
-
-    <!-- Tab Switcher -->
-    <div class="gallery-tabs reveal">
-      <button class="tab-btn active" data-tab="design">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-        Hasil Desain Canva
-      </button>
-      <button class="tab-btn" data-tab="org">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        Kegiatan Organisasi
-      </button>
-    </div>
-
-    <!-- Design Tab -->
-    <div class="gallery-grid" id="tab-design">
-
-      <div class="gallery-card reveal" data-category="design">
-        <div class="card-img-wrap">
-          <img
-            class="card-img"
-            src="assets/images/cin.png"
-            alt="Poster Event Kampus"
-            loading="lazy"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-          />
-          <div class="card-overlay">
-            <span class="overlay-tag">Depkominfo Project</span>
-            <button class="preview-btn" data-img="assets/images/cin.png" title="Lihat besar">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="card-info">
-          <h3>Self-Love Valentine</h3>
-          <p>Desain poster edukatif bertema "Mencintai Diri Sendiri" untuk mading kampus IT Del dalam rangka perayaan Valentine.</p>
-          <div class="card-tags">
-            <span>Awareness</span><span>Mental Health</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-card reveal" data-category="design">
-        <div class="card-img-wrap">
-          <img class="card-img" src="assets/images/kw.png" alt="Konten Instagram" loading="lazy"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div class="card-overlay">
-            <span class="overlay-tag">Entrepreneurship Project</span>
-            <button class="preview-btn" data-img="assets/images/kw.png" title="Lihat besar">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="card-info">
-          <h3>Mie Jagoan Jeyara</h3>
-          <p>Desain poster promosi digital untuk proyek wirausaha SMA. Menampilkan visual produk dengan toping melimpah dan penawaran harga kompetitif.</p>
-          <div class="card-tags"><span>Wirausaha</span><span>Poster Kuliner</span></div>
-        </div>
-      </div>
-
-      <div class="gallery-card reveal" data-category="design">
-        <div class="card-img-wrap">
-          <img class="card-img" src="assets/images/bem.png" alt="Infografis" loading="lazy"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div class="card-overlay">
-            <span class="overlay-tag">Infographic Design</span>
-            <button class="preview-btn" data-img="assets/images/bem.png" title="Lihat besar">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="card-info">
-          <h3>Next-Gen City Tech</h3>
-          <p>Desain infografis teknologi masa depan yang mencakup Smart Infrastructure, AI, Cloud Computing, dan Cybersecurity.</p>
-          <div class="card-tags"><span>Smart City</span><span>Technology</span><span>AI & Automation</span></div>
-        </div>
-      </div>
-
-      <div class="gallery-card reveal" data-category="design">
-        <div class="card-img-wrap">
-          <img class="card-img" src="assets/images/abu.png" alt="Presentasi" loading="lazy"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div class="card-overlay">
-            <span class="overlay-tag">BEM IT Del Project</span>
-            <button class="preview-btn" data-img="assets/images/abu.png" title="Lihat besar">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="card-info">
-          <h3>Rabu Abu 2026</h3>
-          <p>Desain konten media sosial untuk memperingati Rabu Abu sebagai momen refleksi diri dan perjalanan spiritual bagi komunitas kampus.</p>
-          <div class="card-tags"><span>Social Media</span><span>Religious Event</span></div>
-        </div>
-      </div>
-
-      <div class="gallery-card reveal" data-category="design">
-        <div class="card-img-wrap">
-          <img class="card-img" src="assets/images/natal.png" alt="Banner" loading="lazy"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div class="card-overlay">
-            <span class="overlay-tag">Official Event Design</span>
-            <button class="preview-btn" data-img="assets/images/natal.png" title="Lihat besar">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="card-info">
-          <h3>Natal Ceria IT Del</h3>
-          <p>Desain poster perayaan Natal bersama di Institut Teknologi Del, mengusung tema kebersamaan dan semangat berbagi bagi seluruh civitas akademika.</p>
-          <div class="card-tags"><span>Event Poster</span><span>Christmas</span></div>
-        </div>
-      </div>
-
-      <div class="gallery-card reveal" data-category="design">
-        <div class="card-img-wrap">
-          <img class="card-img" src="assets/images/code.png" alt="Branding" loading="lazy"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div class="card-overlay">
-            <span class="overlay-tag">Dicoding Final Project</span>
-            <button class="preview-btn" data-img="assets/images/code.png" title="Lihat besar">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="card-info">
-          <h3>Commercial Poster Design</h3>
-          <p>Tugas akhir kelas desain Dicoding: Membuat poster iklan produk susu steril dengan menekankan visual yang segar dan informasi promo yang komunikatif.</p>
-          <div class="card-tags"><span>Advertising</span><span>Dicoding</span><span>Product Branding</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Org Tab -->
-    <div class="gallery-grid hidden" id="tab-org">
-
-      <!--
-        =====================================================
-        CARA MENAMBAHKAN FOTO KEGIATAN ORGANISASI:
-        Simpan foto di folder: assets/images/
-        Ganti src="assets/images/org-1.jpg" dll sesuai nama filenya.
-        =====================================================
-      -->
-
-      <div class="gallery-card org-card reveal">
-        <div class="card-img-wrap">
-          <img class="card-img" src="assets/images/depkom.jpeg" alt="Pelantikan Depkominfo BEM IT Del 2026" loading="lazy"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div class="card-overlay org">
-            <span class="overlay-tag org-tag">Organisasi</span>
-            <button class="preview-btn" data-img="assets/images/depkom.jpeg" title="Lihat besar">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="card-info">
-          <div class="org-badge">BEM Institut Teknologi Del</div>
-          <h3>Departemen Kominfo</h3>
-          <p>Resmi dilantik sebagai bagian dari Departemen Komunikasi dan Informasi BEM IT Del periode 2026, bertanggung jawab dalam pengelolaan media dan komunikasi publik kampus.</p>
-          <div class="card-tags"><span>Public Relation</span><span>Communication</span></div>
-        </div>
-      </div>
-
-      <div class="gallery-card org-card reveal">
-        <div class="card-img-wrap">
-          <img class="card-img" src="assets/images/desain.jpeg" alt="Tim Desain Depkominfo BEM IT Del" loading="lazy"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div class="card-overlay org">
-            <span class="overlay-tag org-tag">Creative Team</span>
-            <button class="preview-btn" data-img="assets/images/desain.jpeg" title="Lihat besar">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="card-info">
-          <div class="org-badge">Divisi Desain - Depkominfo</div>
-          <h3>Visual Identity Designer</h3>
-          <p>Bertanggung jawab dalam merancang identitas visual, poster kegiatan, dan konten kreatif untuk mendukung komunikasi publik BEM Institut Teknologi Del.</p>
-          <div class="card-tags"><span>Graphic Design</span><span>Creative Media</span></div>
-        </div>
-      </div>
-
-      <div class="gallery-card org-card reveal">
-        <div class="card-img-wrap">
-          <img class="card-img" src="assets/images/sertijab rdc.jpeg" alt="Sertijab RDC IT Del" loading="lazy"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div class="card-overlay org">
-            <span class="overlay-tag org-tag">UKM RDC</span>
-            <button class="preview-btn" data-img="assets/images/sertijab rdc.jpeg" title="Lihat besar">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="card-info">
-          <div class="org-badge">Radio & Digital Content Del</div>
-          <h3>Serah Terima Jabatan</h3>
-          <p>Momen resmi serah terima jabatan di UKM RDC IT Del, menandai komitmen untuk terus menginspirasi melalui konten digital dan penyiaran radio kampus.</p>
-          <div class="card-tags"><span>Leadership</span><span>Broadcasting</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CERTIFICATES ===== -->
-  <section class="cert-section" id="certificates">
-    <div class="cert-bg"></div>
-    <div class="section-header reveal">
-      <span class="section-label">Pencapaian</span>
-      <h2>Sertifikat Dicoding</h2>
-      <p>Bukti komitmen saya dalam terus belajar dan berkembang di bidang teknologi.</p>
-    </div>
-    <div class="cert-grid">
-      <div class="cert-card reveal">
-        <div class="cert-img-wrap">
-          <img
-            class="cert-img"
-            src="assets/images/1.jpg"
-            alt="Sertifikat Memulai Pemrograman dengan Python"
-            loading="lazy"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-          />
-          <button class="cert-zoom-btn" data-img="assets/images/1.jpg" title="Perbesar">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-          </button>
-        </div>
-        <div class="cert-card-inner">
-          <div class="cert-ribbon">Dicoding</div>
-          <div class="cert-body">
-            <span class="cert-category">Programming</span>
-            <h3 class="cert-title">Memulai Pemrograman dengan Python</h3>
-            <p class="cert-desc">Lulus dengan materi standar industri yang mencakup penguasaan struktur data, control flow, hingga konsep Object-Oriented Programming (OOP) menggunakan Python.</p>
-            <div class="cert-meta">
-              <span class="cert-date">11 Februari 2026</span>
-              <span class="cert-issuer">Dicoding Indonesia</span>
             </div>
           </div>
-          <a href="https://www.dicoding.com/certificates/L4PQ9RQ7OPO1" target="_blank" rel="noopener" class="cert-btn">
-            Lihat Sertifikat
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+          <div class="floating-tag tag-1">React ⚛</div>
+          <div class="floating-tag tag-2">Canva 🎨</div>
+          <div class="floating-tag tag-3">Figma ✦</div>
         </div>
-        <div class="cert-glow"></div>
+      </div>
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about-strip" id="about" aria-label="Tentang saya">
+      <div class="about-container">
+        <div class="about-text reveal">
+          <span class="section-label">Tentang Saya</span>
+          <h2>Seorang Software Engineer yang peduli terhadap <em>detail &amp; desain</em></h2>
+          <p>Mahasiswa Software Engineering di Institut Teknologi Del yang juga memiliki ketertarikan kuat pada desain visual. Aktif di BEM dan UKM RDC, serta terus belajar melalui platform seperti Dicoding.</p>
+        </div>
+        <div class="about-skills reveal" aria-label="Daftar skill">
+          <div class="skill-pill">HTML/CSS</div>
+          <div class="skill-pill">JavaScript</div>
+          <div class="skill-pill">Python</div>
+          <div class="skill-pill">Canva</div>
+          <div class="skill-pill">Figma</div>
+          <div class="skill-pill">Git</div>
+          <div class="skill-pill">React</div>
+          <div class="skill-pill">Laravel</div>
+          <div class="skill-pill">Flutter</div>
+          <div class="skill-pill">Next.js</div>
+          <div class="skill-pill">Golang</div>
+          <div class="skill-pill">C</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TECHNICAL SKILLS ===== -->
+    <section class="skills-section" id="skills" aria-label="Technical skills">
+      <div class="section-header reveal">
+        <span class="section-label">Kemampuan</span>
+        <h2>Technical Skills</h2>
+        <p>Teknologi yang saya kuasai dan terus saya kembangkan setiap harinya.</p>
       </div>
 
-      <div class="cert-card reveal">
-        <div class="cert-img-wrap">
-          <img
-            class="cert-img"
-            src="assets/images/2.jpg"
-            alt="Sertifikat Belajar Dasar AI"
-            loading="lazy"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-          />
-          <button class="cert-zoom-btn" data-img="assets/images/2.jpg" title="Perbesar">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
-          </button>
-        </div>
-        <div class="cert-card-inner">
-          <div class="cert-ribbon ribbon-2">Dicoding</div>
-          <div class="cert-body">
-            <span class="cert-category cert-category-2">Artificial Intelligence</span>
-            <h3 class="cert-title">Belajar Dasar AI</h3>
-            <p class="cert-desc">Sertifikat ini memvalidasi pemahaman dasar mengenai konsep kecerdasan buatan, machine learning, serta implementasi etis teknologi AI dalam industri modern.</p>
-            <div class="cert-meta">
-              <span class="cert-date">10 Januari 2026</span>
-              <span class="cert-issuer">Dicoding Indonesia</span>
+      <div class="skills-container">
+
+        <!-- Frontend -->
+        <div class="skills-category reveal">
+          <div class="skills-cat-header">
+            <span class="skills-cat-icon" aria-hidden="true">🎨</span>
+            <h3>Frontend</h3>
+          </div>
+          <div class="skills-list">
+            <div class="skill-bar-item" data-level="90">
+              <div class="skill-bar-top">
+                <span class="skill-name">HTML / CSS</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="HTML/CSS 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 90%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item" data-level="80">
+              <div class="skill-bar-top">
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-percent">80%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="JavaScript 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 80%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item" data-level="65">
+              <div class="skill-bar-top">
+                <span class="skill-name">React / Next.js</span>
+                <span class="skill-percent">65%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="React/Next.js 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 65%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item" data-level="75">
+              <div class="skill-bar-top">
+                <span class="skill-name">Figma / Canva</span>
+                <span class="skill-percent">75%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="Figma/Canva 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 75%"></div>
+              </div>
             </div>
           </div>
-          <a href="https://www.dicoding.com/certificates/JMZVV7V03ZN9" target="_blank" rel="noopener" class="cert-btn cert-btn-2">
-            Lihat Sertifikat
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
         </div>
-        <div class="cert-glow cert-glow-2"></div>
+
+        <!-- Backend -->
+        <div class="skills-category reveal">
+          <div class="skills-cat-header">
+            <span class="skills-cat-icon" aria-hidden="true">⚙️</span>
+            <h3>Backend</h3>
+          </div>
+          <div class="skills-list">
+            <div class="skill-bar-item" data-level="70">
+              <div class="skill-bar-top">
+                <span class="skill-name">Python</span>
+                <span class="skill-percent">70%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="Python 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 70%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item" data-level="60">
+              <div class="skill-bar-top">
+                <span class="skill-name">Node.js / Express</span>
+                <span class="skill-percent">60%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="Node.js 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 60%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item" data-level="55">
+              <div class="skill-bar-top">
+                <span class="skill-name">Laravel</span>
+                <span class="skill-percent">55%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="Laravel 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 55%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item" data-level="50">
+              <div class="skill-bar-top">
+                <span class="skill-name">Golang</span>
+                <span class="skill-percent">50%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="Golang 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 50%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Database & Mobile -->
+        <div class="skills-category reveal">
+          <div class="skills-cat-header">
+            <span class="skills-cat-icon" aria-hidden="true">🗄️</span>
+            <h3>Database & Mobile</h3>
+          </div>
+          <div class="skills-list">
+            <div class="skill-bar-item" data-level="65">
+              <div class="skill-bar-top">
+                <span class="skill-name">MySQL / PostgreSQL</span>
+                <span class="skill-percent">65%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="MySQL 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 65%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item" data-level="55">
+              <div class="skill-bar-top">
+                <span class="skill-name">Flutter</span>
+                <span class="skill-percent">55%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="Flutter 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 55%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item" data-level="60">
+              <div class="skill-bar-top">
+                <span class="skill-name">C / C++</span>
+                <span class="skill-percent">60%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="C/C++ 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 60%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="skills-category reveal">
+          <div class="skills-cat-header">
+            <span class="skills-cat-icon" aria-hidden="true">🛠️</span>
+            <h3>Tools & DevOps</h3>
+          </div>
+          <div class="skills-list">
+            <div class="skill-bar-item" data-level="80">
+              <div class="skill-bar-top">
+                <span class="skill-name">Git / GitHub</span>
+                <span class="skill-percent">80%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="Git 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 80%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item" data-level="70">
+              <div class="skill-bar-top">
+                <span class="skill-name">VS Code / IDE</span>
+                <span class="skill-percent">70%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="VS Code 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 70%"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item" data-level="60">
+              <div class="skill-bar-top">
+                <span class="skill-name">Linux / Terminal</span>
+                <span class="skill-percent">60%</span>
+              </div>
+              <div class="skill-bar-track" role="progressbar" aria-label="Linux 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                <div class="skill-bar-fill" style="--skill-level: 60%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== CONTACT / FOOTER ===== -->
-  <section class="contact-section" id="contact">
-    <div class="contact-container reveal">
-      <div class="contact-tag">Let's Connect</div>
-      <h2>Siap Berkolaborasi?</h2>
-      <p>Saya terbuka untuk peluang baru, kolaborasi, dan diskusi menarik seputar teknologi & desain.</p>
-      <div class="contact-links">
+    <!-- ===== CONTENT CREATOR ===== -->
+    <section class="creator-section" id="creator" aria-label="Content Creator">
+      <div class="creator-inner">
 
-        <a href="https://linkedin.com/in/bintang-jesisca-tanjung-06610a270" target="_blank" rel="noopener" class="contact-card linkedin">
-          <!-- ✏️ Ganti USERNAME_KAMU dengan username LinkedIn kamu -->
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
+        <div class="section-header reveal">
+          <span class="section-label">Digital Presence</span>
+          <h2>Content Creator</h2>
+          <p>Di luar coding, saya aktif sebagai content creator dengan jutaan tayangan di berbagai platform.</p>
+        </div>
 
-        <a href="https://github.com/adorablestarr" target="_blank" rel="noopener" class="contact-card github">
-          <!-- ✏️ Ganti USERNAME_KAMU dengan username GitHub kamu -->
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-          GitHub
-        </a>
+        <!-- Platform Stats Cards -->
+        <div class="creator-platforms">
 
-        <a href="https://instagram.com/_na.jaeris?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="contact-card instagram">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
-          Instagram
-        </a>
+          <!-- TikTok -->
+          <div class="platform-card tiktok reveal" aria-label="Statistik TikTok">
+            <div class="platform-header">
+              <div class="platform-icon" aria-hidden="true">
+                <!-- TikTok icon SVG -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#ff0050"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+              </div>
+              <div>
+                <div class="platform-name">TikTok</div>
+                <div class="platform-handle">@_na.jaeris</div>
+              </div>
+            </div>
 
-        <!-- Email - klik untuk salin alamat email -->
-        <button
-          class="contact-card email"
-          id="copyEmailBtn"
-          data-email="starstanjung4@gmail.com"
-          title="Klik untuk salin email"
-          type="button"
-        >
-          <!-- ✏️ Ganti data-email dengan email kamu -->
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <span id="emailBtnText">starstanjung4@gmail.com</span>
-          <span class="copy-hint">Klik untuk salin</span>
+            <div class="platform-stats">
+              <div class="stat-box">
+                <span class="stat-box-num">291K</span>
+                <span class="stat-box-label">Tayangan</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-box-num">182K</span>
+                <span class="stat-box-label">Penonton</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-box-num">5.8K</span>
+                <span class="stat-box-label">Suka</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-box-num">126K</span>
+                <span class="stat-box-label">Penonton Baru</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-box-num">78</span>
+                <span class="stat-box-label">Komentar</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-box-num">340</span>
+                <span class="stat-box-label">Bagikan</span>
+              </div>
+            </div>
+
+            <span class="platform-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Top Post: 352K tayangan
+            </span>
+          </div>
+
+          <!-- CapCut -->
+          <div class="platform-card capcut reveal" aria-label="Statistik CapCut">
+            <div class="platform-header">
+              <div class="platform-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#00b8b2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+              </div>
+              <div>
+                <div class="platform-name">CapCut</div>
+                <div class="platform-handle">Template Creator</div>
+              </div>
+            </div>
+
+            <div class="platform-stats">
+              <div class="stat-box">
+                <span class="stat-box-num">7.6M</span>
+                <span class="stat-box-label">Total Tayangan</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-box-num">1.4M</span>
+                <span class="stat-box-label">Non-Domestik</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-box-num">6.5M</span>
+                <span class="stat-box-label">Domestik</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-box-num">1.4M</span>
+                <span class="stat-box-label">Penggunaan</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-box-num">80.4K</span>
+                <span class="stat-box-label">Ekspor</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-box-num">8.5K</span>
+                <span class="stat-box-label">Difavoritkan</span>
+              </div>
+            </div>
+
+            <span class="platform-badge">
+              🔥 Trending Template Creator
+            </span>
+          </div>
+
+        </div>
+
+        <!-- About Creator + Preview -->
+        <div class="creator-about">
+          <div class="creator-about-text reveal">
+            <h3>Konten yang <span>Menjangkau</span> Jutaan Orang</h3>
+            <p>
+              Saya membuat konten video editing dan template CapCut yang digunakan oleh kreator di seluruh dunia. Dengan total lebih dari 7.9 juta tayangan, konten saya telah menjangkau audiens internasional secara organik.
+            </p>
+            <p>
+              Fokus konten saya adalah template video kreatif, tutorial editing, dan konten trending yang relate dengan komunitas muda Indonesia dan global.
+            </p>
+            <div class="creator-skills-list">
+              <span class="creator-skill-tag">Video Editing</span>
+              <span class="creator-skill-tag">CapCut Template</span>
+              <span class="creator-skill-tag">Content Strategy</span>
+              <span class="creator-skill-tag">Trend Analysis</span>
+              <span class="creator-skill-tag">Visual Storytelling</span>
+            </div>
+          </div>
+
+          <div class="creator-preview-card reveal">
+            <div class="creator-preview-card-header">
+              <span aria-hidden="true">📊</span>
+              Analytics Overview — CapCut &amp; TikTok
+            </div>
+            <!-- Ganti src dengan screenshot analytics kamu -->
+            <!-- Contoh: src="assets/images/projects/capcut-analytics.jpg" -->
+            <div class="creator-preview-img-placeholder">
+              <span>📈</span>
+              <p>Tambahkan screenshot analytics<br/>assets/images/creator-analytics.jpg</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="gallery-section" id="gallery" aria-label="Gallery karya dan aktivitas">
+      <div class="section-header reveal">
+        <span class="section-label">Portofolio</span>
+        <h2>Karya &amp; Aktivitas</h2>
+        <p>Hasil kreasi desain dan perjalanan saya di dunia organisasi kampus.</p>
+      </div>
+
+      <div class="gallery-tabs reveal" role="tablist" aria-label="Kategori gallery">
+        <button class="tab-btn active" data-tab="design" role="tab" aria-selected="true" aria-controls="tab-design">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Hasil Desain Canva
         </button>
-
+        <button class="tab-btn" data-tab="org" role="tab" aria-selected="false" aria-controls="tab-org">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Kegiatan Organisasi
+        </button>
       </div>
-    </div>
-  </section>
 
-  <footer class="footer">
+      <!-- Design Tab -->
+      <div class="gallery-grid" id="tab-design" role="tabpanel" aria-label="Tab desain Canva">
+        <div class="gallery-card reveal" data-category="design">
+          <div class="card-img-wrap">
+            <img class="card-img" src="assets/images/cin.png" alt="Poster Self-Love Valentine untuk mading kampus IT Del" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="card-overlay">
+              <span class="overlay-tag">Depkominfo Project</span>
+              <button class="preview-btn" data-img="assets/images/cin.png" aria-label="Lihat besar: poster Self-Love Valentine">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3>Self-Love Valentine</h3>
+            <p>Desain poster edukatif bertema "Mencintai Diri Sendiri" untuk mading kampus IT Del dalam rangka perayaan Valentine.</p>
+            <div class="card-tags"><span>Awareness</span><span>Mental Health</span></div>
+          </div>
+        </div>
+
+        <div class="gallery-card reveal" data-category="design">
+          <div class="card-img-wrap">
+            <img class="card-img" src="assets/images/kw.png" alt="Poster promosi digital Mie Jagoan Jeyara" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="card-overlay">
+              <span class="overlay-tag">Entrepreneurship Project</span>
+              <button class="preview-btn" data-img="assets/images/kw.png" aria-label="Lihat besar: poster Mie Jagoan Jeyara">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3>Mie Jagoan Jeyara</h3>
+            <p>Desain poster promosi digital untuk proyek wirausaha SMA. Menampilkan visual produk dengan toping melimpah dan penawaran harga kompetitif.</p>
+            <div class="card-tags"><span>Wirausaha</span><span>Poster Kuliner</span></div>
+          </div>
+        </div>
+
+        <div class="gallery-card reveal" data-category="design">
+          <div class="card-img-wrap">
+            <img class="card-img" src="assets/images/bem.png" alt="Infografis Next-Gen City Tech" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="card-overlay">
+              <span class="overlay-tag">Infographic Design</span>
+              <button class="preview-btn" data-img="assets/images/bem.png" aria-label="Lihat besar: infografis teknologi masa depan">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3>Next-Gen City Tech</h3>
+            <p>Desain infografis teknologi masa depan yang mencakup Smart Infrastructure, AI, Cloud Computing, dan Cybersecurity.</p>
+            <div class="card-tags"><span>Smart City</span><span>Technology</span><span>AI & Automation</span></div>
+          </div>
+        </div>
+
+        <div class="gallery-card reveal" data-category="design">
+          <div class="card-img-wrap">
+            <img class="card-img" src="assets/images/abu.png" alt="Konten media sosial Rabu Abu 2026" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="card-overlay">
+              <span class="overlay-tag">BEM IT Del Project</span>
+              <button class="preview-btn" data-img="assets/images/abu.png" aria-label="Lihat besar: konten Rabu Abu 2026">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3>Rabu Abu 2026</h3>
+            <p>Desain konten media sosial untuk memperingati Rabu Abu sebagai momen refleksi diri dan perjalanan spiritual bagi komunitas kampus.</p>
+            <div class="card-tags"><span>Social Media</span><span>Religious Event</span></div>
+          </div>
+        </div>
+
+        <div class="gallery-card reveal" data-category="design">
+          <div class="card-img-wrap">
+            <img class="card-img" src="assets/images/natal.png" alt="Poster Natal Ceria IT Del" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="card-overlay">
+              <span class="overlay-tag">Official Event Design</span>
+              <button class="preview-btn" data-img="assets/images/natal.png" aria-label="Lihat besar: poster Natal Ceria IT Del">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3>Natal Ceria IT Del</h3>
+            <p>Desain poster perayaan Natal bersama di Institut Teknologi Del, mengusung tema kebersamaan dan semangat berbagi bagi seluruh civitas akademika.</p>
+            <div class="card-tags"><span>Event Poster</span><span>Christmas</span></div>
+          </div>
+        </div>
+
+        <div class="gallery-card reveal" data-category="design">
+          <div class="card-img-wrap">
+            <img class="card-img" src="assets/images/code.png" alt="Poster iklan produk susu tugas akhir Dicoding" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="card-overlay">
+              <span class="overlay-tag">Dicoding Final Project</span>
+              <button class="preview-btn" data-img="assets/images/code.png" aria-label="Lihat besar: poster iklan produk Dicoding">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="card-info">
+            <h3>Commercial Poster Design</h3>
+            <p>Tugas akhir kelas desain Dicoding: Membuat poster iklan produk susu steril dengan menekankan visual yang segar dan informasi promo yang komunikatif.</p>
+            <div class="card-tags"><span>Advertising</span><span>Dicoding</span><span>Product Branding</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Org Tab -->
+      <div class="gallery-grid hidden" id="tab-org" role="tabpanel" aria-label="Tab kegiatan organisasi">
+        <div class="gallery-card org-card reveal">
+          <div class="card-img-wrap">
+            <img class="card-img" src="assets/images/depkom.jpeg" alt="Pelantikan Departemen Kominfo BEM IT Del 2026" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="card-overlay org">
+              <span class="overlay-tag org-tag">Organisasi</span>
+              <button class="preview-btn" data-img="assets/images/depkom.jpeg" aria-label="Lihat besar: pelantikan Depkominfo BEM IT Del">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="org-badge">BEM Institut Teknologi Del</div>
+            <h3>Departemen Kominfo</h3>
+            <p>Resmi dilantik sebagai bagian dari Departemen Komunikasi dan Informasi BEM IT Del periode 2026, bertanggung jawab dalam pengelolaan media dan komunikasi publik kampus.</p>
+            <div class="card-tags"><span>Public Relation</span><span>Communication</span></div>
+          </div>
+        </div>
+
+        <div class="gallery-card org-card reveal">
+          <div class="card-img-wrap">
+            <img class="card-img" src="assets/images/desain.jpeg" alt="Tim Desain Divisi Depkominfo BEM IT Del" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="card-overlay org">
+              <span class="overlay-tag org-tag">Creative Team</span>
+              <button class="preview-btn" data-img="assets/images/desain.jpeg" aria-label="Lihat besar: tim desain Depkominfo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="org-badge">Divisi Desain - Depkominfo</div>
+            <h3>Visual Identity Designer</h3>
+            <p>Bertanggung jawab dalam merancang identitas visual, poster kegiatan, dan konten kreatif untuk mendukung komunikasi publik BEM Institut Teknologi Del.</p>
+            <div class="card-tags"><span>Graphic Design</span><span>Creative Media</span></div>
+          </div>
+        </div>
+
+        <div class="gallery-card org-card reveal">
+          <div class="card-img-wrap">
+            <img class="card-img" src="assets/images/sertijab rdc.jpeg" alt="Serah terima jabatan UKM RDC IT Del" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="card-overlay org">
+              <span class="overlay-tag org-tag">UKM RDC</span>
+              <button class="preview-btn" data-img="assets/images/sertijab rdc.jpeg" aria-label="Lihat besar: sertijab RDC IT Del">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="card-info">
+            <div class="org-badge">Radio &amp; Digital Content Del</div>
+            <h3>Serah Terima Jabatan</h3>
+            <p>Momen resmi serah terima jabatan di UKM RDC IT Del, menandai komitmen untuk terus menginspirasi melalui konten digital dan penyiaran radio kampus.</p>
+            <div class="card-tags"><span>Leadership</span><span>Broadcasting</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CERTIFICATES ===== -->
+    <section class="cert-section" id="certificates" aria-label="Sertifikat Dicoding">
+      <div class="cert-bg" aria-hidden="true"></div>
+      <div class="section-header reveal">
+        <span class="section-label">Pencapaian</span>
+        <h2>Sertifikat Dicoding</h2>
+        <p>Bukti komitmen saya dalam terus belajar dan berkembang di bidang teknologi.</p>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card reveal">
+          <div class="cert-img-wrap">
+            <img class="cert-img" src="assets/images/1.jpg" alt="Sertifikat Dicoding: Memulai Pemrograman dengan Python" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <button class="cert-zoom-btn" data-img="assets/images/1.jpg" aria-label="Perbesar sertifikat Python">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+          <div class="cert-card-inner">
+            <div class="cert-ribbon">Dicoding</div>
+            <div class="cert-body">
+              <span class="cert-category">Programming</span>
+              <h3 class="cert-title">Memulai Pemrograman dengan Python</h3>
+              <p class="cert-desc">Lulus dengan materi standar industri yang mencakup penguasaan struktur data, control flow, hingga konsep Object-Oriented Programming (OOP) menggunakan Python.</p>
+              <div class="cert-meta">
+                <span class="cert-date">11 Februari 2026</span>
+                <span class="cert-issuer">Dicoding Indonesia</span>
+              </div>
+            </div>
+            <a href="https://www.dicoding.com/certificates/L4PQ9RQ7OPO1" target="_blank" rel="noopener" class="cert-btn" aria-label="Lihat sertifikat Python di Dicoding">
+              Lihat Sertifikat
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+          <div class="cert-glow" aria-hidden="true"></div>
+        </div>
+
+        <div class="cert-card reveal">
+          <div class="cert-img-wrap">
+            <img class="cert-img" src="assets/images/2.jpg" alt="Sertifikat Dicoding: Belajar Dasar AI" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <button class="cert-zoom-btn" data-img="assets/images/2.jpg" aria-label="Perbesar sertifikat Dasar AI">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+          <div class="cert-card-inner">
+            <div class="cert-ribbon ribbon-2">Dicoding</div>
+            <div class="cert-body">
+              <span class="cert-category cert-category-2">Artificial Intelligence</span>
+              <h3 class="cert-title">Belajar Dasar AI</h3>
+              <p class="cert-desc">Sertifikat ini memvalidasi pemahaman dasar mengenai konsep kecerdasan buatan, machine learning, serta implementasi etis teknologi AI dalam industri modern.</p>
+              <div class="cert-meta">
+                <span class="cert-date">10 Januari 2026</span>
+                <span class="cert-issuer">Dicoding Indonesia</span>
+              </div>
+            </div>
+            <a href="https://www.dicoding.com/certificates/JMZVV7V03ZN9" target="_blank" rel="noopener" class="cert-btn cert-btn-2" aria-label="Lihat sertifikat Dasar AI di Dicoding">
+              Lihat Sertifikat
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+          <div class="cert-glow cert-glow-2" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT FORM ===== -->
+    <section class="contact-form-section" id="contact-form" aria-label="Formulir kontak">
+      <div class="section-header reveal">
+        <span class="section-label">Hubungi Saya</span>
+        <h2>Kirim Pesan</h2>
+        <p>Punya project atau kesempatan menarik? Saya senang mendengarnya.</p>
+      </div>
+
+      <div class="contact-form-wrapper reveal">
+        <form class="contact-form" id="contactForm" novalidate aria-label="Form kirim pesan">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactName" class="form-label">Nama Lengkap <span aria-hidden="true">*</span></label>
+              <input type="text" id="contactName" name="name" class="form-input" placeholder="Budi Santoso" autocomplete="name" aria-required="true" aria-describedby="nameError" />
+              <span class="form-error" id="nameError" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Email <span aria-hidden="true">*</span></label>
+              <input type="email" id="contactEmail" name="email" class="form-input" placeholder="budi@email.com" autocomplete="email" aria-required="true" aria-describedby="emailError" />
+              <span class="form-error" id="emailError" role="alert" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contactSubject" class="form-label">Subjek</label>
+            <input type="text" id="contactSubject" name="subject" class="form-input" placeholder="Kolaborasi project / Tawaran magang / dll" autocomplete="off" />
+          </div>
+
+          <div class="form-group">
+            <label for="contactMessage" class="form-label">Pesan <span aria-hidden="true">*</span></label>
+            <textarea id="contactMessage" name="message" class="form-input form-textarea" placeholder="Halo Bintang! Saya tertarik untuk..." rows="5" aria-required="true" aria-describedby="messageError"></textarea>
+            <span class="form-error" id="messageError" role="alert" aria-live="polite"></span>
+            <span class="form-char-count" id="charCount" aria-live="polite">0 / 500</span>
+          </div>
+
+          <button type="submit" class="form-submit" id="formSubmit">
+            <span class="submit-text">Kirim Pesan</span>
+            <span class="submit-loading" aria-hidden="true">Mengirim...</span>
+            <svg class="submit-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+
+          <div class="form-success" id="formSuccess" role="status" aria-live="polite" hidden>
+            <span aria-hidden="true">✅</span>
+            <div>
+              <strong>Pesan terkirim!</strong>
+              <p>Terima kasih! Saya akan membalas dalam 1-2 hari kerja.</p>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT LINKS ===== -->
+    <section class="contact-section" id="contact" aria-label="Link kontak">
+      <div class="contact-container reveal">
+        <div class="contact-tag">Let's Connect</div>
+        <h2>Siap Berkolaborasi?</h2>
+        <p>Saya terbuka untuk peluang baru, kolaborasi, dan diskusi menarik seputar teknologi &amp; desain.</p>
+        <div class="contact-links" role="list">
+
+          <a href="https://linkedin.com/in/bintang-jesisca-tanjung-06610a270" target="_blank" rel="noopener" class="contact-card linkedin" role="listitem" aria-label="Kunjungi LinkedIn Bintang Tanjung">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+
+          <a href="https://github.com/adorablestarr" target="_blank" rel="noopener" class="contact-card github" role="listitem" aria-label="Kunjungi GitHub adorablestarr">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+
+          <a href="https://instagram.com/_na.jaeris" target="_blank" rel="noopener" class="contact-card instagram" role="listitem" aria-label="Kunjungi Instagram _na.jaeris">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+
+          <button class="contact-card email" id="copyEmailBtn" data-email="starstanjung4@gmail.com" title="Klik untuk salin email" type="button" aria-label="Salin alamat email starstanjung4@gmail.com">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span id="emailBtnText">starstanjung4@gmail.com</span>
+            <span class="copy-hint">Klik untuk salin</span>
+          </button>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" aria-label="Footer">
     <div class="footer-container">
-      <span class="footer-logo"><span class="logo-bracket">&lt;</span>Star<span class="logo-bracket">/&gt;</span></span>
-      <p class="footer-copy">© 2025 Star. All rights reserved.</p>
+      <span class="footer-logo" aria-label="Star">
+        <span class="logo-bracket">&lt;</span>Star<span class="logo-bracket">/&gt;</span>
+      </span>
+      <p class="footer-copy">© 2025 Bintang Jesisca Tanjung. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- JS — theme.js harus paling pertama agar tidak flicker -->
+  <script src="js/theme.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/gallery.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/skills.js"></script>
+  <script src="js/contact.js"></script>
 </body>
 </html>

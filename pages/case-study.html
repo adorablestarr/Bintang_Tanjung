@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study: Portfolio Website — Bintang Tanjung</title>
+  <meta name="description" content="Case study pembangunan portfolio website pribadi dari scratch — problem, solution, tech stack, dan lessons learned." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <style>
+    /* ===== CASE STUDY PAGE ===== */
+    .cs-hero {
+      min-height: 55vh;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--nav-h) + var(--space-xl)) var(--space-lg) var(--space-xl);
+      background: var(--clr-bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cs-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(108,99,255,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cs-hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .cs-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--clr-text-muted);
+      margin-bottom: var(--space-md);
+    }
+
+    .cs-breadcrumb a {
+      color: var(--clr-accent);
+      text-decoration: none;
+    }
+
+    .cs-breadcrumb a:hover { text-decoration: underline; }
+
+    .cs-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      background: rgba(108,99,255,0.1);
+      border: 1px solid rgba(108,99,255,0.25);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-sm);
+      color: var(--clr-text);
+    }
+
+    .cs-title span { color: var(--clr-accent); }
+
+    .cs-subtitle {
+      font-size: 1.05rem;
+      color: var(--clr-text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-lg);
+      max-width: 580px;
+    }
+
+    .cs-meta-row {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--clr-border);
+      padding-top: var(--space-md);
+    }
+
+    .cs-meta-item { display: flex; flex-direction: column; gap: 0.25rem; }
+
+    .cs-meta-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--clr-text-dim);
+    }
+
+    .cs-meta-value {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--clr-text);
+    }
+
+    /* ===== CONTENT ===== */
+    .cs-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: var(--space-2xl) var(--space-lg);
+    }
+
+    .cs-section { margin-bottom: var(--space-xl); }
+
+    .cs-section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--clr-accent);
+      margin-bottom: var(--space-sm);
+    }
+
+    .cs-section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--clr-accent);
+      border-radius: 2px;
+    }
+
+    .cs-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
+      color: var(--clr-text);
+    }
+
+    .cs-section p {
+      font-size: 0.95rem;
+      color: var(--clr-text-muted);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .cs-highlight {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-left: 4px solid var(--clr-accent);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      color: var(--clr-text-muted);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* Flow diagram */
+    .cs-flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin: var(--space-md) 0;
+    }
+
+    .cs-flow-step {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1.1rem;
+      text-align: center;
+      flex: 1;
+      min-width: 100px;
+    }
+
+    .cs-flow-step-icon { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+    .cs-flow-step-label { font-size: 0.75rem; font-weight: 600; color: var(--clr-text); }
+
+    .cs-flow-arrow {
+      color: var(--clr-accent);
+      font-size: 1.2rem;
+      padding: 0 0.4rem;
+      flex-shrink: 0;
+    }
+
+    /* Lessons list */
+    .cs-lessons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-top: var(--space-sm);
+    }
+
+    .cs-lesson-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.9rem 1.1rem;
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      color: var(--clr-text-muted);
+      line-height: 1.6;
+    }
+
+    .cs-lesson-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+    /* Stack pills */
+    .cs-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: var(--space-sm);
+    }
+
+    .cs-stack-pill {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      background: var(--clr-surface-2);
+      border: 1px solid var(--clr-border-2);
+      border-radius: 100px;
+      color: var(--clr-text-muted);
+      font-family: monospace;
+    }
+
+    /* Image placeholder */
+    .cs-img-placeholder {
+      width: 100%;
+      height: 300px;
+      background: var(--clr-surface);
+      border: 2px dashed var(--clr-border-2);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: var(--space-md) 0;
+      color: var(--clr-text-dim);
+      font-size: 0.82rem;
+      font-family: monospace;
+      text-align: center;
+    }
+
+    .cs-img-placeholder span { font-size: 2rem; }
+
+    /* Back button */
+    .cs-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--clr-accent);
+      text-decoration: none;
+      margin-bottom: var(--space-xl);
+      transition: gap var(--transition);
+    }
+
+    .cs-back:hover { gap: 0.75rem; }
+
+    @media (max-width: 600px) {
+      .cs-hero { padding: calc(var(--nav-h) + 2rem) 1rem 2rem; }
+      .cs-content { padding: var(--space-xl) 1rem; }
+      .cs-flow { flex-direction: column; }
+      .cs-flow-arrow { transform: rotate(90deg); align-self: center; }
+      .cs-meta-row { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar" aria-label="Navigasi">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo" aria-label="Kembali ke homepage">
+        <span class="logo-bracket">&lt;</span>Star<span class="logo-bracket">/&gt;</span>
+      </a>
+      <div style="margin-left: auto;">
+        <a href="../index.html" class="cs-back" aria-label="Kembali ke portfolio">
+          ← Kembali ke Portfolio
+        </a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Ganti tema">
+        <span class="theme-icon theme-icon--dark" aria-hidden="true">🌙</span>
+        <span class="theme-icon theme-icon--light" aria-hidden="true">☀️</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="cs-hero">
+      <div class="cs-hero-inner">
+        <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Portfolio</a>
+          <span aria-hidden="true">→</span>
+          <a href="../index.html#projects">Projects</a>
+          <span aria-hidden="true">→</span>
+          <span aria-current="page">Case Study</span>
+        </nav>
+
+        <div class="cs-tag">Case Study</div>
+        <h1 class="cs-title">
+          Personal Portfolio<br/>
+          <span>Website</span>
+        </h1>
+        <p class="cs-subtitle">
+          Bagaimana saya membangun portfolio profesional dari nol menggunakan HTML, CSS, dan JavaScript murni — tanpa framework, tanpa library eksternal.
+        </p>
+
+        <div class="cs-meta-row">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Timeline</span>
+            <span class="cs-meta-value">2 Minggu</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-value">Full Stack Developer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Status</span>
+            <span class="cs-meta-value">✅ Live</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Tahun</span>
+            <span class="cs-meta-value">2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cs-content">
+
+      <!-- PROBLEM -->
+      <section class="cs-section reveal">
+        <div class="cs-section-label">01 — Problem Statement</div>
+        <h2>Masalah yang Ingin Dipecahkan</h2>
+        <p>
+          Sebagai mahasiswa software engineering yang aktif di organisasi dan belajar desain, saya tidak punya satu tempat terpusat untuk menampilkan semua karya dan pencapaian saya kepada recruiter atau kolaborator.
+        </p>
+        <p>
+          Platform seperti LinkedIn dan GitHub bagus, tapi tidak cukup untuk menampilkan karya desain visual, foto kegiatan organisasi, dan kepribadian profesional saya sekaligus dalam satu tampilan yang kohesif.
+        </p>
+        <div class="cs-highlight">
+          "Bagaimana cara membuat portfolio yang bisa menceritakan siapa saya secara profesional dan kreatif, sekaligus mudah di-maintain tanpa backend?"
+        </div>
+      </section>
+
+      <!-- SOLUTION -->
+      <section class="cs-section reveal">
+        <div class="cs-section-label">02 — Solution</div>
+        <h2>Solusi yang Diimplementasikan</h2>
+        <p>
+          Membangun single-page portfolio dengan HTML, CSS, dan JavaScript vanilla yang modular, ringan, dan tidak bergantung framework apapun. Keputusan ini disengaja untuk menunjukkan pemahaman mendalam tentang web fundamentals.
+        </p>
+
+        <div class="cs-stack">
+          <span class="cs-stack-pill">HTML5 Semantic</span>
+          <span class="cs-stack-pill">CSS Variables</span>
+          <span class="cs-stack-pill">CSS Grid & Flexbox</span>
+          <span class="cs-stack-pill">Vanilla JavaScript</span>
+          <span class="cs-stack-pill">IntersectionObserver API</span>
+          <span class="cs-stack-pill">Clipboard API</span>
+          <span class="cs-stack-pill">localStorage</span>
+          <span class="cs-stack-pill">CSS Custom Animations</span>
+        </div>
+
+        <p style="margin-top: 1rem;">
+          Fitur utama yang diimplementasikan: scroll reveal animation, lightbox image preview, gallery tab switcher, email clipboard copy, dark/light mode toggle dengan localStorage persistence, dan contact form dengan validasi.
+        </p>
+      </section>
+
+      <!-- SYSTEM FLOW -->
+      <section class="cs-section reveal">
+        <div class="cs-section-label">03 — System Flow</div>
+        <h2>Alur Sistem</h2>
+        <p>Berikut alur interaksi utama pengguna di portfolio ini:</p>
+
+        <div class="cs-flow" role="list" aria-label="System flow">
+          <div class="cs-flow-step" role="listitem">
+            <span class="cs-flow-step-icon">🧑‍💻</span>
+            <span class="cs-flow-step-label">User<br/>Visit</span>
+          </div>
+          <div class="cs-flow-arrow" aria-hidden="true">→</div>
+          <div class="cs-flow-step" role="listitem">
+            <span class="cs-flow-step-icon">🌗</span>
+            <span class="cs-flow-step-label">Theme<br/>Applied</span>
+          </div>
+          <div class="cs-flow-arrow" aria-hidden="true">→</div>
+          <div class="cs-flow-step" role="listitem">
+            <span class="cs-flow-step-icon">📜</span>
+            <span class="cs-flow-step-label">Scroll<br/>Reveal</span>
+          </div>
+          <div class="cs-flow-arrow" aria-hidden="true">→</div>
+          <div class="cs-flow-step" role="listitem">
+            <span class="cs-flow-step-icon">🖼️</span>
+            <span class="cs-flow-step-label">Gallery<br/>& Lightbox</span>
+          </div>
+          <div class="cs-flow-arrow" aria-hidden="true">→</div>
+          <div class="cs-flow-step" role="listitem">
+            <span class="cs-flow-step-icon">📩</span>
+            <span class="cs-flow-step-label">Contact<br/>& Copy</span>
+          </div>
+        </div>
+
+        <p>Setiap fitur dibangun dengan prinsip <strong>progressive enhancement</strong> — berfungsi tanpa JavaScript, tapi lebih baik dengannya.</p>
+      </section>
+
+      <!-- SCREENSHOT -->
+      <section class="cs-section reveal">
+        <div class="cs-section-label">04 — Screenshot</div>
+        <h2>Tampilan Website</h2>
+
+        <div class="cs-img-placeholder">
+          <span>🖥️</span>
+          <p>Screenshot desktop<br/>assets/images/projects/portfolio-desktop.jpg</p>
+        </div>
+
+        <div class="cs-img-placeholder">
+          <span>📱</span>
+          <p>Screenshot mobile<br/>assets/images/projects/portfolio-mobile.jpg</p>
+        </div>
+      </section>
+
+      <!-- CHALLENGES -->
+      <section class="cs-section reveal">
+        <div class="cs-section-label">05 — Challenges</div>
+        <h2>Tantangan Teknis</h2>
+
+        <div class="cs-lessons">
+          <div class="cs-lesson-item">
+            <span class="cs-lesson-icon">🧩</span>
+            <div><strong style="color: var(--clr-text); display: block; margin-bottom: 0.3rem;">IntersectionObserver & Tab Hidden State</strong>
+            Elemen di tab yang hidden (display:none) tidak terdeteksi IntersectionObserver. Solusi: triggerReveal() manual saat tab dibuka, dan DOMContentLoaded trigger untuk tab aktif pertama.</div>
+          </div>
+          <div class="cs-lesson-item">
+            <span class="cs-lesson-icon">🍞</span>
+            <div><strong style="color: var(--clr-text); display: block; margin-bottom: 0.3rem;">Toast Notification Stacking</strong>
+            Toast menumpuk jika diklik cepat. Solusi: clearTimeout sebelum set timer baru, dan void offsetWidth untuk force CSS reflow agar animasi reset.</div>
+          </div>
+          <div class="cs-lesson-item">
+            <span class="cs-lesson-icon">🌗</span>
+            <div><strong style="color: var(--clr-text); display: block; margin-bottom: 0.3rem;">Theme Flash on Load</strong>
+            Dark/light mode bisa "flash" sebentar sebelum JS jalan. Solusi: theme.js di-load sebagai script pertama sebelum konten render.</div>
+          </div>
+          <div class="cs-lesson-item">
+            <span class="cs-lesson-icon">📋</span>
+            <div><strong style="color: var(--clr-text); display: block; margin-bottom: 0.3rem;">Clipboard API Compatibility</strong>
+            navigator.clipboard tidak tersedia di HTTP (hanya HTTPS) dan beberapa browser lama. Solusi: fallback dengan textarea + execCommand.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LESSONS LEARNED -->
+      <section class="cs-section reveal">
+        <div class="cs-section-label">06 — Lessons Learned</div>
+        <h2>Yang Saya Pelajari</h2>
+
+        <div class="cs-lessons">
+          <div class="cs-lesson-item">
+            <span class="cs-lesson-icon">✅</span>
+            Web fundamentals (HTML/CSS/JS) masih sangat relevan dan powerful tanpa framework
+          </div>
+          <div class="cs-lesson-item">
+            <span class="cs-lesson-icon">✅</span>
+            CSS Variables memudahkan theming secara dramatis — dark mode hanya perlu override variabel
+          </div>
+          <div class="cs-lesson-item">
+            <span class="cs-lesson-icon">✅</span>
+            IntersectionObserver lebih efisien dari scroll event listener untuk animasi viewport
+          </div>
+          <div class="cs-lesson-item">
+            <span class="cs-lesson-icon">✅</span>
+            Modular CSS (satu file per section) membuat debugging jauh lebih mudah
+          </div>
+          <div class="cs-lesson-item">
+            <span class="cs-lesson-icon">✅</span>
+            Accessibility (aria-label, role, focus-visible) bukan opsional — ini standar profesional
+          </div>
+        </div>
+      </section>
+
+      <!-- BACK LINK -->
+      <div style="text-align: center; margin-top: var(--space-xl);">
+        <a href="../index.html#projects" class="cs-back" style="font-size: 1rem;">
+          ← Kembali ke Portfolio
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer style="border-top: 1px solid var(--clr-border); padding: var(--space-lg); text-align: center; color: var(--clr-text-dim); font-size: 0.8rem;">
+    © 2025 Bintang Jesisca Tanjung
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>
