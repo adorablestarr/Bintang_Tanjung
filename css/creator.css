@@ -265,3 +265,33 @@
   .creator-platforms { grid-template-columns: 1fr; }
   .platform-stats { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* ===== PLATFORM CARD CLICKABLE ===== */
+.platform-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-xl);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.platform-card-link:focus-visible {
+  outline: 2px solid var(--clr-accent);
+  outline-offset: 3px;
+}
+
+.platform-visit-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--clr-text-dim);
+  margin-top: 0.5rem;
+  transition: color var(--transition);
+}
+
+.platform-card:hover .platform-visit-hint { color: var(--clr-accent); }
+
+.tiktok:hover  .platform-visit-hint { color: #ff0050; }
+.capcut:hover  .platform-visit-hint { color: #00b8b2; }

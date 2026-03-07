@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project: Personal Portfolio Website — Bintang Tanjung</title>
+  <meta name="description" content="Detail project portfolio website pribadi Bintang Jesisca Tanjung — HTML, CSS, JavaScript vanilla." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/nav.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <style>
+    /* ===== PROJECT DETAIL PAGE ===== */
+    body { background: var(--clr-bg); color: var(--clr-text); font-family: var(--font-body); }
+
+    .pd-hero {
+      min-height: 60vh;
+      padding: calc(var(--nav-h) + 4rem) 2rem 3rem;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .pd-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(108,99,255,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .pd-hero-inner { max-width: 860px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+
+    .pd-breadcrumb {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.8rem; color: var(--clr-text-muted); margin-bottom: 1.5rem;
+    }
+    .pd-breadcrumb a { color: var(--clr-accent); text-decoration: none; }
+    .pd-breadcrumb a:hover { text-decoration: underline; }
+
+    .pd-role-badge {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--clr-accent); background: rgba(108,99,255,0.1);
+      border: 1px solid rgba(108,99,255,0.25); padding: 0.3rem 0.8rem;
+      border-radius: 100px; margin-bottom: 1rem;
+    }
+
+    .pd-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800; line-height: 1.1; letter-spacing: -0.02em;
+      color: var(--clr-text); margin-bottom: 1rem;
+    }
+    .pd-title span { color: var(--clr-accent); }
+
+    .pd-tagline {
+      font-size: 1.05rem; color: var(--clr-text-muted); line-height: 1.7;
+      max-width: 600px; margin-bottom: 2rem;
+    }
+
+    /* Action buttons */
+    .pd-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .pd-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.4rem; border-radius: 100px;
+      font-size: 0.875rem; font-weight: 600; text-decoration: none;
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+      border: none; cursor: pointer;
+    }
+    .pd-btn-primary {
+      background: var(--clr-accent); color: white;
+    }
+    .pd-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(108,99,255,0.4); }
+    .pd-btn-ghost {
+      background: var(--clr-surface); border: 1px solid var(--clr-border-2); color: var(--clr-text-muted);
+    }
+    .pd-btn-ghost:hover { border-color: var(--clr-accent); color: var(--clr-text); }
+
+    /* Meta row */
+    .pd-meta {
+      display: flex; gap: 2.5rem; flex-wrap: wrap;
+      border-top: 1px solid var(--clr-border); padding-top: 1.5rem;
+    }
+    .pd-meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .pd-meta-label {
+      font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--clr-text-dim);
+    }
+    .pd-meta-value { font-size: 0.875rem; font-weight: 500; color: var(--clr-text); }
+
+    /* Screenshot area */
+    .pd-screenshot-wrap {
+      max-width: 860px; margin: 0 auto; padding: 0 2rem 3rem;
+    }
+    .pd-screenshot {
+      width: 100%; border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--clr-border);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+    .pd-screenshot img { width: 100%; display: block; }
+    .pd-screenshot-placeholder {
+      width: 100%; height: 400px;
+      background: var(--clr-surface);
+      border: 2px dashed var(--clr-border-2);
+      border-radius: 20px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.75rem; color: var(--clr-text-dim);
+      font-family: monospace; font-size: 0.85rem; text-align: center;
+    }
+    .pd-screenshot-placeholder span { font-size: 3rem; }
+
+    /* Content */
+    .pd-content { max-width: 860px; margin: 0 auto; padding: 3rem 2rem; }
+
+    .pd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 3rem; }
+
+    .pd-info-card {
+      background: var(--clr-surface); border: 1px solid var(--clr-border);
+      border-radius: 16px; padding: 1.5rem;
+    }
+    .pd-info-card-title {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--clr-accent); margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .pd-info-card p {
+      font-size: 0.875rem; color: var(--clr-text-muted); line-height: 1.7;
+    }
+
+    /* Stack */
+    .pd-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .pd-stack-pill {
+      font-size: 0.72rem; font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      background: var(--clr-surface-2);
+      border: 1px solid var(--clr-border-2);
+      border-radius: 100px; color: var(--clr-text-muted);
+      font-family: monospace;
+    }
+
+    /* Section heading */
+    .pd-section { margin-bottom: 3rem; }
+    .pd-section-heading {
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 700; color: var(--clr-text);
+      margin-bottom: 1rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--clr-border);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .pd-section p { font-size: 0.9rem; color: var(--clr-text-muted); line-height: 1.8; margin-bottom: 0.75rem; }
+
+    /* Highlight blockquote */
+    .pd-highlight {
+      background: var(--clr-surface);
+      border-left: 4px solid var(--clr-accent);
+      border-radius: 0 12px 12px 0;
+      padding: 1rem 1.25rem; margin: 1.5rem 0;
+      font-size: 0.9rem; color: var(--clr-text-muted); line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* Back link */
+    .pd-back {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--clr-accent); font-size: 0.875rem; font-weight: 600;
+      text-decoration: none; transition: gap var(--transition);
+    }
+    .pd-back:hover { gap: 0.75rem; }
+
+    @media (max-width: 600px) {
+      .pd-grid { grid-template-columns: 1fr; }
+      .pd-hero { padding: calc(var(--nav-h) + 2rem) 1rem 2rem; }
+      .pd-content, .pd-screenshot-wrap { padding-left: 1rem; padding-right: 1rem; }
+      .pd-meta { gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>Star<span class="logo-bracket">/&gt;</span>
+      </a>
+      <div style="margin-left:auto; display:flex; align-items:center; gap:1rem;">
+        <a href="../index.html#projects" class="pd-back">← Kembali ke Projects</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle tema">
+        <span class="theme-icon theme-icon--dark">🌙</span>
+        <span class="theme-icon theme-icon--light">☀️</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="pd-hero">
+      <div class="pd-hero-inner">
+        <nav class="pd-breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span>→</span>
+          <a href="../index.html#projects">Projects</a>
+          <span>→</span>
+          <span aria-current="page">Portfolio Website</span>
+        </nav>
+
+        <div class="pd-role-badge">Full Stack Developer · 2025</div>
+
+        <h1 class="pd-title">Personal Portfolio<br/><span>Website</span></h1>
+
+        <p class="pd-tagline">
+          Website portfolio pribadi yang dibangun dari scratch menggunakan HTML, CSS, dan JavaScript murni — tanpa framework, menampilkan karya desain, sertifikat, dan info kontak secara profesional.
+        </p>
+
+        <div class="pd-actions">
+          <a href="#" target="_blank" rel="noopener" class="pd-btn pd-btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+          <a href="https://github.com/adorablestarr" target="_blank" rel="noopener" class="pd-btn pd-btn-ghost">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            GitHub Repo
+          </a>
+        </div>
+
+        <div class="pd-meta">
+          <div class="pd-meta-item">
+            <span class="pd-meta-label">Tujuan</span>
+            <span class="pd-meta-value">Personal Branding</span>
+          </div>
+          <div class="pd-meta-item">
+            <span class="pd-meta-label">Timeline</span>
+            <span class="pd-meta-value">2 Minggu</span>
+          </div>
+          <div class="pd-meta-item">
+            <span class="pd-meta-label">Role</span>
+            <span class="pd-meta-value">Designer & Developer</span>
+          </div>
+          <div class="pd-meta-item">
+            <span class="pd-meta-label">Status</span>
+            <span class="pd-meta-value">✅ Live</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREENSHOT -->
+    <div class="pd-screenshot-wrap">
+      <div class="pd-screenshot">
+        <!-- Ganti dengan screenshot website kamu -->
+        <!-- <img src="../assets/images/projects/portfolio-preview.jpg" alt="Screenshot portfolio website" /> -->
+        <div class="pd-screenshot-placeholder">
+          <span>🖥️</span>
+          <p>Tambahkan screenshot:<br/>assets/images/projects/portfolio-preview.jpg</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="pd-content">
+
+      <!-- Info Grid -->
+      <div class="pd-grid">
+        <div class="pd-info-card reveal">
+          <div class="pd-info-card-title">🎯 Tujuan Project</div>
+          <p>Membuat portfolio profesional untuk melamar magang dan pekerjaan sebagai Software Engineer. Ingin ada satu tempat yang menampilkan skill teknis, karya desain, dan kegiatan organisasi secara kohesif.</p>
+        </div>
+
+        <div class="pd-info-card reveal">
+          <div class="pd-info-card-title">🛠️ Tech Stack</div>
+          <div class="pd-stack">
+            <span class="pd-stack-pill">HTML5</span>
+            <span class="pd-stack-pill">CSS3</span>
+            <span class="pd-stack-pill">Vanilla JavaScript</span>
+            <span class="pd-stack-pill">IntersectionObserver</span>
+            <span class="pd-stack-pill">CSS Variables</span>
+            <span class="pd-stack-pill">Clipboard API</span>
+            <span class="pd-stack-pill">localStorage</span>
+          </div>
+        </div>
+
+        <div class="pd-info-card reveal">
+          <div class="pd-info-card-title">👩‍💻 Role Saya</div>
+          <p>Mengerjakan seluruh project secara mandiri — mulai dari desain UI/UX di atas kertas, coding HTML/CSS dari nol, implementasi JavaScript untuk interaktivitas, hingga testing responsiveness di berbagai device.</p>
+        </div>
+
+        <div class="pd-info-card reveal">
+          <div class="pd-info-card-title">✨ Fitur Utama</div>
+          <p>Dark/light mode, scroll reveal animation, lightbox image preview, gallery tab switcher, email copy to clipboard, contact form dengan validasi, dan animated skill progress bars.</p>
+        </div>
+      </div>
+
+      <!-- Challenge & Solution -->
+      <div class="pd-section reveal">
+        <h2 class="pd-section-heading">⚡ Tantangan & Solusi</h2>
+        <p>
+          Tantangan terbesar adalah membuat animasi scroll reveal bekerja dengan benar di semua skenario — termasuk untuk elemen yang ada di dalam tab yang tersembunyi (display: none).
+        </p>
+        <div class="pd-highlight">
+          Bug: IntersectionObserver tidak bisa mendeteksi elemen yang hidden, sehingga kartu gallery di tab kedua tidak pernah mendapat class .visible meskipun sudah di-scroll.
+        </div>
+        <p>
+          Solusinya: membuat fungsi <code style="background:var(--clr-surface-2); padding:0.1rem 0.4rem; border-radius:4px; font-family:monospace; font-size:0.85rem;">triggerReveal()</code> yang dijalankan secara manual setiap kali tab dibuka — dengan stagger delay 80ms antar card untuk efek yang natural.
+        </p>
+        <p>
+          Tantangan lain: toast notification email copy muncul di belakang footer dan bertumpuk kalau diklik cepat. Solusi: pindahkan posisi ke atas layar, tambahkan <code style="background:var(--clr-surface-2); padding:0.1rem 0.4rem; border-radius:4px; font-family:monospace; font-size:0.85rem;">void offsetWidth</code> untuk force browser reflow sebelum animasi di-reset.
+        </p>
+      </div>
+
+      <!-- Lessons Learned -->
+      <div class="pd-section reveal">
+        <h2 class="pd-section-heading">💡 Yang Saya Pelajari</h2>
+        <p>Proyek ini membuktikan bahwa HTML/CSS/JavaScript murni masih sangat powerful tanpa framework. CSS Variables membuat dark mode implementation sangat clean — hanya perlu override variabel di satu tempat.</p>
+        <p>Saya juga belajar pentingnya accessibility: menambahkan aria-label, focus-visible styling, dan semantic HTML bukan sekedar formalitas, tapi membuat website lebih profesional di mata recruiter teknis.</p>
+      </div>
+
+      <!-- Back link -->
+      <div style="text-align:center; margin-top: 3rem;">
+        <a href="../index.html#projects" class="pd-back">← Lihat Project Lainnya</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer style="border-top:1px solid var(--clr-border); padding:2rem; text-align:center; color:var(--clr-text-dim); font-size:0.8rem;">
+    © 2025 Bintang Jesisca Tanjung
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>
